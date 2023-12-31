@@ -52,6 +52,8 @@ class MoviePage extends StatelessWidget {
               ),
               suffixIcon: IconButton(
                 onPressed: () {
+                  controller.isSearch.value = false;
+                  controller.getListMovie();
                   controller.searchMovieModel.clear();
                   textFieldController.clear();
                   controller.valueSearch.value = "";
@@ -60,9 +62,6 @@ class MoviePage extends StatelessWidget {
                   if (!currentFocus.hasPrimaryFocus) {
                     currentFocus.unfocus();
                   }
-                  controller.isSearch.value == false;
-                  controller.getListMovie();
-                  // controller.searchValue();
                 },
                 icon: const Icon(
                   Icons.close,
