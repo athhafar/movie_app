@@ -16,6 +16,10 @@ class MovieController extends GetxController {
   var valueSearch = ''.obs;
   var isSearch = false.obs;
 
+  //loadmore
+  var currentPage = 1.obs;
+  var enablePullUp = true.obs;
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -28,14 +32,23 @@ class MovieController extends GetxController {
     loadingMovie.value = true;
     // isSearch.value = false;
     try {
-      var data = await MovieServices.getListMovie();
+      var data = await MovieServices.getListMovie(page: currentPage);
       if (data['results'] != null) {
         var dataList = data['results'] as List;
         debugPrint("tes $dataList");
         List<MovieList> list =
             dataList.map((e) => MovieList.fromJson(e)).toList();
-        listMovie.value = list;
-        loadingMovie.value = false;
+        if (list.isEmpty) {
+          enablePullUp.value = false;
+        }
+        if (currentPage.value > data['page']) {
+          currentPage.value = data['page'];
+        } else {
+          print('tes pagination');
+          listMovie.addAll(list);
+        }
+        // listMovie.value = list;
+        // loadingMovie.value = false;
       } else {
         loadingMovie.value = false;
       }
