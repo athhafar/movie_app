@@ -28,7 +28,7 @@ class ApiServices {
           return http.Response("Time Out", 404);
         },
       );
-    }
+    } else {}
 
     debugPrint("response.body");
 

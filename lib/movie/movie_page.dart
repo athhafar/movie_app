@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -40,7 +39,6 @@ class MoviePage extends StatelessWidget {
               _timer = Timer(const Duration(milliseconds: 200), () {
                 controller.isSearch.value = value.isNotEmpty;
                 controller.valueSearch.value = value;
-
                 controller.searchValue();
               });
             },
@@ -132,49 +130,44 @@ class MoviePage extends StatelessWidget {
                                     arguments: controller.listMovie[index].id,
                                   );
                                 },
-                                child: Container(
-                                  // margin: const EdgeInsets.all(4),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(4),
-                                        child: Image.network(
-                                          baseImage +
-                                              controller
-                                                  .listMovie[index].posterPath,
-                                          height: 195,
-                                          fit: BoxFit.cover,
-                                        ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(4),
+                                      child: Image.network(
+                                        baseImage +
+                                            controller
+                                                .listMovie[index].posterPath,
+                                        height: 195,
+                                        fit: BoxFit.cover,
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(4),
-                                        child: Text(
-                                          '${controller.listMovie[index].title}\n',
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(4),
+                                      child: Text(
+                                        '${controller.listMovie[index].title}\n',
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
                                         ),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(4),
-                                        child: Text(
-                                          controller
-                                              .listMovie[index].releaseDate,
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(4),
+                                      child: Text(
+                                        controller.listMovie[index].releaseDate,
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
                                         ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -215,49 +208,45 @@ class MoviePage extends StatelessWidget {
                                       controller.searchMovieModel[index].id,
                                 );
                               },
-                              child: Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(4),
-                                      child: Image.network(
-                                        baseImage +
-                                                controller
-                                                    .searchMovieModel[index]
-                                                    .posterPath ??
-                                            "https://i.ibb.co/S32HNjD/no-image.jpg",
-                                        height: 195,
-                                        fit: BoxFit.cover,
-                                      ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(4),
+                                    child: Image.network(
+                                      baseImage +
+                                          controller.searchMovieModel[index]
+                                              .posterPath,
+                                      height: 195,
+                                      fit: BoxFit.cover,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(4),
-                                      child: Text(
-                                        '${controller.searchMovieModel[index].title}\n',
-                                        style: GoogleFonts.montserrat(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Text(
+                                      '${controller.searchMovieModel[index].title}\n',
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
                                       ),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(4),
-                                      child: Text(
-                                        controller.searchMovieModel[index]
-                                            .releaseDate,
-                                        style: GoogleFonts.montserrat(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Text(
+                                      controller
+                                          .searchMovieModel[index].releaseDate,
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
                                       ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),

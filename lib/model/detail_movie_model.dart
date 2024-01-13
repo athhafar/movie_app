@@ -48,8 +48,7 @@ class DetailMovieModel {
     adult = json['adult'] ?? false;
     backdropPath = json['backdrop_path'] ?? "/1X7vow16X7CnCoexXh4H4F2yDJv.jpg";
     budget = json['budget'] ?? 0;
-    genres =
-        List.from(json['genres']).map((e) => Genres.fromJson(e)).toList() ?? [];
+    genres = List.from(json['genres']).map((e) => Genres.fromJson(e)).toList();
     homepage = json['homepage'] ?? '';
     id = json['id'] ?? 0;
     imdbId = json['imdb_id'] ?? '';
@@ -58,7 +57,6 @@ class DetailMovieModel {
     overview = json['overview'] ?? '';
     popularity = json['popularity'] ?? 0.0;
     posterPath = json['poster_path'] ?? "/1X7vow16X7CnCoexXh4H4F2yDJv.jpg";
-    ;
     releaseDate = json['release_date'] ?? '';
     revenue = json['revenue'] ?? 0;
     runtime = json['runtime'] ?? 0;
