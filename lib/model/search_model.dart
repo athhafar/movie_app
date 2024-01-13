@@ -32,14 +32,16 @@ class SearchModel {
 
   SearchModel.fromJson(Map<String, dynamic> json) {
     adult = json['adult'] ?? "";
-    backdropPath = json['backdrop_path'] ?? "";
+    backdropPath = json['backdrop_path'] ?? "/1X7vow16X7CnCoexXh4H4F2yDJv.jpg";
+    ;
     genreIds = List.castFrom<dynamic, int>(json['genre_ids'] ?? "");
     id = json['id'] ?? "";
     originalLanguage = json['original_language'] ?? "";
     originalTitle = json['original_title'] ?? "";
     overview = json['overview'] ?? "";
     popularity = json['popularity'] ?? "";
-    posterPath = json['poster_path'];
+    posterPath = json['poster_path'] ?? "/1X7vow16X7CnCoexXh4H4F2yDJv.jpg";
+    ;
     releaseDate = json['release_date'] ?? "";
     title = json['title'] ?? "";
     video = json['video'] ?? "";

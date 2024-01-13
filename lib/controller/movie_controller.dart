@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:movie_app_iat/model/movie_model.dart';
-import 'package:movie_app_iat/services/movie_services.dart';
+import 'package:movie_app_iat/services/api_endpoint.dart';
+import 'package:movie_app_iat/services/api_services.dart';
 
 import '../model/search_model.dart';
 
 class MovieController extends GetxController {
   var listMovie = <MovieList>[].obs;
   var loadingMovie = false.obs;
-
-  var baseImage = "https://image.tmdb.org/t/p/w500";
 
   //search
   var searchMovieModel = <SearchModel>[].obs;
@@ -30,9 +29,14 @@ class MovieController extends GetxController {
 
   void getListMovie() async {
     loadingMovie.value = true;
-    // isSearch.value = false;
     try {
-      var data = await MovieServices.getListMovie(page: currentPage);
+      var data = await ApiServices.api(
+        endpoint: APiEndpoint.movie,
+        param: "?page=${currentPage.value.toString()}",
+        type: APIMethod.get,
+      );
+
+      print('page  $currentPage');
       if (data['results'] != null) {
         var dataList = data['results'] as List;
         debugPrint("tes $dataList");
@@ -47,8 +51,6 @@ class MovieController extends GetxController {
           print('tes pagination');
           listMovie.addAll(list);
         }
-        // listMovie.value = list;
-        // loadingMovie.value = false;
       } else {
         loadingMovie.value = false;
       }
@@ -60,10 +62,12 @@ class MovieController extends GetxController {
 
   void searchValue() async {
     loadingMovie.value = true;
-    // isSearch.value = true;
-    try {
-      var data = await MovieServices.getSearch(valueSearch);
 
+    try {
+      var data = await ApiServices.api(
+          type: APIMethod.get,
+          endpoint: APiEndpoint.search,
+          param: "?query=${valueSearch.value.toString()}");
       if (data['results'] != null) {
         var dataSearch = data['results'] as List;
         debugPrint('tessearch $dataSearch');
@@ -74,7 +78,6 @@ class MovieController extends GetxController {
       } else {
         loadingMovie.value = false;
       }
-      // searchMovieModel.value = SearchModel.fromJson(data)
     } catch (e) {
       loadingMovie.value = false;
       debugPrint('EROR SEEARCH MOVIE : ${e.toString()}');

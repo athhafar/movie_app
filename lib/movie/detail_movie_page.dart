@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app_iat/controller/detail_movie_controller.dart';
+import 'package:movie_app_iat/utilities/helpers.dart';
 import 'package:movie_app_iat/widgets/galeri_widget.dart';
 
 class DetailMoviePage extends StatelessWidget {
@@ -21,7 +22,7 @@ class DetailMoviePage extends StatelessWidget {
                     Stack(
                       children: [
                         Image.network(
-                          '${controller.baseImage}${controller.detailMovietModel.value?.posterPath}',
+                          '$baseImage${controller.detailMovietModel.value?.posterPath}',
                           fit: BoxFit.cover,
                           width: Get.width,
                           height: Get.height / 2,

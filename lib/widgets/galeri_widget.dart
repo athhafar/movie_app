@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:movie_app_iat/controller/detail_movie_controller.dart';
+import 'package:movie_app_iat/utilities/helpers.dart';
 import 'package:movie_app_iat/widgets/photo_view_gallery_dialog.dart';
 
 import '../model/gallery_model.dart';
@@ -46,7 +47,7 @@ class GaleriWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: NetworkImage(
-                            "${controller.baseImage}${controller.galleryModel[index].filePath}",
+                            "$baseImage${controller.galleryModel[index].filePath}",
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -67,10 +68,8 @@ class GaleriWidget extends StatelessWidget {
   }
 
   List<String> getBackdropsFilePaths(List<Backdrops>? galleryModels) {
-    DetailMovieController controller = Get.find();
     return galleryModels
-            ?.map<String>(
-                (backdrop) => "${controller.baseImage}${backdrop.filePath}")
+            ?.map<String>((backdrop) => "$baseImage${backdrop.filePath}")
             .toList() ??
         [];
   }

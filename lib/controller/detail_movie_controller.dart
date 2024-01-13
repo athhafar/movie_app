@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app_iat/model/gallery_model.dart';
+import 'package:movie_app_iat/services/api_endpoint.dart';
+import 'package:movie_app_iat/services/api_services.dart';
 
 import '../model/detail_movie_model.dart';
-import '../services/detail_movie_services.dart';
 
 class DetailMovieController extends GetxController {
   var detailMovietModel = Rxn<DetailMovieModel>();
   var loadingMovie = false.obs;
   var selectedID = 0.obs;
-  var baseImage = "https://image.tmdb.org/t/p/w500";
 
   //gallery
   var galleryModel = <Backdrops>[].obs;
@@ -24,7 +24,10 @@ class DetailMovieController extends GetxController {
   void getDetailMovie() async {
     loadingMovie.value = true;
     try {
-      var data = await DetailMovieServices.getDetailMovie(id: selectedID);
+      var data = await ApiServices.api(
+          type: APIMethod.get,
+          endpoint: APiEndpoint.detail,
+          param: "/${selectedID.value.toString()}");
       detailMovietModel.value = DetailMovieModel.fromJson(data);
       print('tesdetail  ${detailMovietModel.value}');
       loadingMovie.value = false;
@@ -41,7 +44,10 @@ class DetailMovieController extends GetxController {
   void getImage() async {
     loadingMovie.value = true;
     try {
-      var data = await DetailMovieServices.getGallery(id: selectedID);
+      var data = await ApiServices.api(
+          type: APIMethod.get,
+          endpoint: APiEndpoint.detail,
+          param: "/${selectedID.value.toString()}/images");
       if (data['backdrops'] != null) {
         var dataList = data['backdrops'] as List;
         debugPrint('data List Gallery $dataList');

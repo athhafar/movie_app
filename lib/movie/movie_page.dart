@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app_iat/controller/movie_controller.dart';
 import 'package:movie_app_iat/movie/detail_movie_page.dart';
+import 'package:movie_app_iat/utilities/helpers.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class MoviePage extends StatelessWidget {
@@ -140,7 +141,7 @@ class MoviePage extends StatelessWidget {
                                       ClipRRect(
                                         borderRadius: BorderRadius.circular(4),
                                         child: Image.network(
-                                          controller.baseImage +
+                                          baseImage +
                                               controller
                                                   .listMovie[index].posterPath,
                                           height: 195,
@@ -221,7 +222,7 @@ class MoviePage extends StatelessWidget {
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(4),
                                       child: Image.network(
-                                        controller.baseImage +
+                                        baseImage +
                                                 controller
                                                     .searchMovieModel[index]
                                                     .posterPath ??
